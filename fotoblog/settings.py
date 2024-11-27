@@ -50,7 +50,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'fotoblog.urls'
-LOGIN_URL = 'login'
 
 TEMPLATES = [
     {
@@ -86,18 +85,19 @@ DATABASES = {
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
+
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': {
+            'min_length': 8
+        }
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': 'authentication.validators.ContainsLetterValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+        'NAME': 'authentication.validators.ContainsNumberValidator',
+    }
 ]
 
 AUTH_USER_MODEL = 'authentication.User'
@@ -116,8 +116,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [BASE_DIR.joinpath('static/')]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = LOGIN_URL
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR.joinpath('media/')

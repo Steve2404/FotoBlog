@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Telecharger une photo</h2>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <button type="submit"> Publier</button>
+    </form>
+    <p>Pas encore inscrit ? <a href="{% url 'signup' %}">Inscrivez vous maintenant !</a> </p>
+{% endblock %}
