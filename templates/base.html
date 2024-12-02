@@ -5,12 +5,13 @@
     <meta charset="UTF-8">
     <title>FotoBlog</title>
     <link rel="stylesheet" href="{% static 'app.css' %}">
+    <script src="{% static 'main.js' %}" defer></script>
 </head>
 <body>
 <div class="sidebar">
     <h1>FotoBlog</h1>
     {% if user.is_authenticated %}
-        <p>Salut {{ request.user }} !</p>
+        <p class="para">Salut {{ request.user }} !</p>
         {% if user.profile_photo %}
             <img class="avatar" src="{{ user.profile_photo.url }}" alt="">
         {% else %}
@@ -40,6 +41,7 @@
 <div class="main">
     {% block content %}{% endblock %}
 </div>
+
 
 </body>
 </html>

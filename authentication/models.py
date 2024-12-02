@@ -30,3 +30,6 @@ class User(AbstractUser):
         elif self.role == self.SUBSCRIBER:
             group = Group.objects.get(name='subscriber')
             group.user_set.add(self)
+
+    def __str__(self):
+        return self.username

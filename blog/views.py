@@ -20,7 +20,6 @@ def photo_upload(request):
     if request.method == 'POST':
         form = forms.PhotoForm(request.POST, request.FILES)
         if form.is_valid():
-            print(form.cleaned_data)
             photo = form.save(commit=False)
             photo.uploader = request.user
             photo.save()
@@ -63,7 +62,6 @@ def edit_blog(request, blog_id):
     delete_form = forms.DeleteBlogForm()
     if request.method == 'POST':
         if 'edit_blog' in request.POST:
-            print(f"Requete: {request.POST}")
             edit_form = forms.BlogForm(request.POST, instance=blog)
             if edit_form.is_valid():
                 edit_form.save()

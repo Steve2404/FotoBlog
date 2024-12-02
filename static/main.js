@@ -1,0 +1,3 @@
+pa = document.querySelector('.para')
+
+
