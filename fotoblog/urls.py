@@ -49,7 +49,7 @@ urlpatterns = [
     path('blog/<int:blog_id>/edit/', blog.views.edit_blog, name='edit_blog'),
     path('blog/<int:blog_id>/', blog.views.view_blog, name='view_blog'),
     path('blog/create/', blog.views.blog_and_upload, name='blog_create'),
-
+    path('follow-users/', blog.views.follower_users, name='follow_users'),
 ]
 
 if settings.DEBUG:
